@@ -4,7 +4,8 @@
 window.onload = function () {
 
     var toc = document.createElement('ul');
-    document.getElementById('toc').appendChild(toc);
+    var body = document.getElementsByTagName('body')[0];
+    body.insertBefore(toc, body.firstChild);
     var cur = function (e) { toc.appendChild(e); };
 
     [].slice.call(document.getElementsByTagName('*'))
@@ -39,8 +40,8 @@ window.onload = function () {
             case 2:
                 var target_level = a[i + 1].tagName.toLowerCase();
                 var toc_uls = [].slice.call(toc.parentElement.getElementsByTagName('ul'));
-                var last_up_or_same = toc_uls.find(function (ul) { return ul.getAttribute('data-level').toLowerCase().localeCompare(target_level) <= 0; });;
-                cur = function (e) { last_up_or_same.appendChild(e) };
+                var last_up_or_same = toc_uls.find(function (ul) { return ul.getAttribute('data-level').toLowerCase().localeCompare(target_level) <= 0; });
+                cur = function (e) { last_up_or_same.appendChild(e); };
                 break;
         }
 
