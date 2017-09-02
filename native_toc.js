@@ -39,7 +39,7 @@ window.onload = function () {
             case 2:
                 var target_level = a[i + 1].tagName.toLowerCase();
                 var toc_uls = [].slice.call(toc.parentElement.getElementsByTagName('ul'));
-                var last_up_or_same = toc_uls.find(function (ul) { return ul.getAttribute('data-level').toLowerCase().localeCompare(target_level) <= 0; });;
+                var last_up_or_same = toc_uls.find(function (ul) { return ul.getAttribute('data-level').toLowerCase().localeCompare(target_level) >= 0; });;
                 cur = function (e) { last_up_or_same.appendChild(e) };
                 break;
         }
